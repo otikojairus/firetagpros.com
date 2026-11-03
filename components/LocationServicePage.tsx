@@ -33,11 +33,9 @@ export function LocationServicePage({ page, serviceBase, related }: Props) {
     <>
       <header className="page-hero page-hero-local">
         <div className="container">
-          <nav className="breadcrumb breadcrumb-bar">
-            <Link href="/">Home</Link>
-            <span aria-hidden>/</span>
-            <Link href={`/${mobilePageSlugForCity(city)}`}>{city}</Link>
-            <span aria-hidden>/</span>
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/">Home</Link> /{" "}
+            <Link href={`/${mobilePageSlugForCity(city)}`}>{city}</Link> /{" "}
             <span>{serviceLabel}</span>
           </nav>
           <p className="eyebrow eyebrow-local">
@@ -96,7 +94,6 @@ export function LocationServicePage({ page, serviceBase, related }: Props) {
             <a className="btn-primary btn-lg sidebar-phone" href={`tel:${SITE.phoneTel}`}>
               {SITE.phoneDisplay}
             </a>
-            <p className="sidebar-hours">{SITE.hours}</p>
             <hr className="sidebar-divider" />
             <h4>More in {city}</h4>
             <ul>

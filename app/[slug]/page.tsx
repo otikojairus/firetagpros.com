@@ -87,7 +87,7 @@ export default async function ServicePage({ params }: Props) {
       <SiteHeader active="services" />
       <header className="page-hero">
         <div className="container">
-          <nav className="breadcrumb">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link> / <span>{area}</span>
           </nav>
           <p className="eyebrow">{eyebrow}</p>

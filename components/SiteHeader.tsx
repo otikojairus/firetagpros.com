@@ -30,7 +30,6 @@ export function SiteHeader({ active = "" }: { active?: NavActive }) {
       <div className="topbar">
         <span className="topbar-l">🇨🇦 Fire extinguisher help coast to coast</span>
         <div className="topbar-r">
-          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
           <a href={`tel:${SITE.phoneTel}`}>{SITE.phoneDisplay}</a>
         </div>
       </div>

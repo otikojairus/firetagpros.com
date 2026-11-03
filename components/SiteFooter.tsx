@@ -18,10 +18,6 @@ export function SiteFooter() {
             <li>
               <a href={`tel:${SITE.phoneTel}`}>{SITE.phoneDisplay}</a>
             </li>
-            <li>
-              <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-            </li>
-            <li>{SITE.hours}</li>
           </ul>
         </div>
         <div>

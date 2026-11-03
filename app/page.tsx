@@ -299,13 +299,6 @@ export default function HomePage() {
                 <strong>Phone</strong>{" "}
                 <a href={`tel:${SITE.phoneTel}`}>{SITE.phoneDisplay}</a>
               </li>
-              <li>
-                <strong>Email</strong>{" "}
-                <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-              </li>
-              <li>
-                <strong>Hours</strong> {SITE.hours}
-              </li>
             </ul>
           </div>
           <QuoteForm />
