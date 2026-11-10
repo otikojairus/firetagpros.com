@@ -46,10 +46,22 @@ export default function HomePage() {
               </a>
             </div>
             <ul className="hero-trust">
-              <li>Inspection &amp; annual tagging</li>
-              <li>Commercial, strata &amp; industrial</li>
-              <li>Recharge after use or drills</li>
-              <li>Talk to a person — no online queue</li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                Inspection &amp; annual tagging
+              </li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                Commercial, strata &amp; industrial
+              </li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                Recharge after use or drills
+              </li>
+              <li>
+                <span aria-hidden="true">✓</span>
+                Talk to a person — no online queue
+              </li>
             </ul>
           </div>
           <div className="hero-panel">
@@ -90,7 +102,7 @@ export default function HomePage() {
       </header>
 
       <section className="section about" id="about">
-        <div className="container split">
+        <div className="container split about-split">
           <div>
             <p className="eyebrow">About us</p>
             <h2>Keep your extinguishers ready — without the guesswork</h2>
@@ -144,10 +156,7 @@ export default function HomePage() {
                   .replace(/\b\w/g, (c) => c.toUpperCase()) ||
                 p.title.replace(" | Call Now", "");
               return (
-                <article
-                  key={p.slug}
-                  className={`service-card${i === 0 ? " featured" : ""}`}
-                >
+                <article key={p.slug} className="service-card">
                   {badge ? <span className="pill">{badge}</span> : null}
                   <div className="svc-icon">{SERVICE_ICONS[i % SERVICE_ICONS.length]}</div>
                   <h3>
@@ -286,7 +295,7 @@ export default function HomePage() {
       </section>
 
       <section className="section quote" id="quote">
-        <div className="container split">
+        <div className="container split quote-split">
           <div>
             <p className="eyebrow">Get help</p>
             <h2>Request a callback</h2>
@@ -296,7 +305,7 @@ export default function HomePage() {
             </p>
             <ul className="contact-list">
               <li>
-                <strong>Phone</strong>{" "}
+                <span>Phone</span>
                 <a href={`tel:${SITE.phoneTel}`}>{SITE.phoneDisplay}</a>
               </li>
             </ul>

@@ -7,10 +7,28 @@ import { SITE } from "@/lib/site";
 
 type NavActive = "" | "services" | "commercial" | "coverage" | "quote";
 
+const SERVICE_LINKS = [
+  { href: "/fire-extinguisher-inspection", label: "Fire extinguisher inspection" },
+  { href: "/commercial-fire-extinguisher-inspection", label: "Commercial inspection" },
+  { href: "/annual-fire-extinguisher-inspection", label: "Annual inspection" },
+  { href: "/fire-extinguisher-maintenance", label: "Maintenance" },
+  { href: "/fire-extinguisher-servicing", label: "Service" },
+  { href: "/fire-extinguisher-recharge-and-refill", label: "Recharge & refill" },
+  { href: "/co2-fire-extinguisher-refill", label: "CO₂ refill" },
+  {
+    href: "/apartment-building-fire-extinguisher-inspection",
+    label: "Apartment buildings",
+  },
+] as const;
+
 export function SiteHeader({ active = "" }: { active?: NavActive }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    setServicesOpen(false);
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -42,13 +60,27 @@ export function SiteHeader({ active = "" }: { active?: NavActive }) {
             <span className="logo-text">{SITE.name}</span>
           </Link>
           <ul className="nav-links">
-            <li>
+            <li className="has-dropdown">
               <Link
                 href="/#services"
                 className={active === "services" ? "active" : undefined}
+                aria-haspopup="true"
               >
                 Services
+                <span className="nav-caret" aria-hidden>
+                  ▾
+                </span>
               </Link>
+              <ul className="nav-dropdown">
+                {SERVICE_LINKS.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href}>{item.label}</Link>
+                  </li>
+                ))}
+                <li>
+                  <Link href="/#services">All services</Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link
@@ -95,9 +127,25 @@ export function SiteHeader({ active = "" }: { active?: NavActive }) {
           className={`mob-menu${menuOpen ? " is-open" : ""}`}
           aria-hidden={!menuOpen}
         >
-          <Link href="/#services" onClick={closeMenu}>
+          <button
+            type="button"
+            className={`mob-accordion${servicesOpen ? " is-open" : ""}`}
+            aria-expanded={servicesOpen}
+            onClick={() => setServicesOpen((o) => !o)}
+          >
             Services
-          </Link>
+            <span aria-hidden>{servicesOpen ? "▴" : "▾"}</span>
+          </button>
+          <div className={`mob-sub${servicesOpen ? " is-open" : ""}`}>
+            {SERVICE_LINKS.map((item) => (
+              <Link key={item.href} href={item.href} onClick={closeMenu}>
+                {item.label}
+              </Link>
+            ))}
+            <Link href="/#services" onClick={closeMenu}>
+              All services
+            </Link>
+          </div>
           <Link href="/#commercial" onClick={closeMenu}>
             Commercial
           </Link>
