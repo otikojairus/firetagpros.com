@@ -12,7 +12,7 @@ export function SiteFooter() {
             your building needs to stay ready and documented.
           </p>
         </div>
-        <div>
+        <div className="footer-col">
           <h4>Contact</h4>
           <ul>
             <li>
@@ -20,7 +20,7 @@ export function SiteFooter() {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="footer-col">
           <h4>Popular services</h4>
           <ul>
             <li>
